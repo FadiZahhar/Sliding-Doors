@@ -1,6 +1,6 @@
 /**
 *
-* @author Pete Rugh pete.rugh@wearetopsecret.com 
+* @author Pete Rugh peterugh@gmail.com 
 *
 */
 
