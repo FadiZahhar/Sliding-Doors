@@ -55,17 +55,17 @@ jQuery.fn.slidingDoors = function (options) {
 	});
 
 	//make sure the slide index they chose exists
-	if(settings.firstPanel >= theDoors.length || settings.firstPanel < 0){
+	if (settings.firstPanel >= theDoors.length || settings.firstPanel < 0) {
 		settings.firstPanel = 0;
 	}
 
 	//calculate the width of the panels when closed based on total width
-	if(settings.fitToWidth > 0){
+	if (settings.fitToWidth > 0) {
 		settings.widthClosed = Math.floor((settings.fitToWidth * (1 - ((settings.widthOpen / settings.fitToWidth))) / (panels - 1)));
 	}
 
 	function slideThem(context) {
-		
+
 		$(' .active', theContainer).removeClass('active');
 		context.addClass('active');
 		currentOffset = 0;
@@ -99,17 +99,15 @@ jQuery.fn.slidingDoors = function (options) {
 				}
 
 				actualWidth = settings.widthClosed + parseInt($(this).css('border-left-width'), 10) + parseInt($(this).css('border-right-width'), 10);
-			}		
+			}
 
 			currentOffset = currentOffset + actualWidth;
 
 		});
 	}
-	
-	
-	
+
 	theDoors.each(function (eleIndex) {
-		if(settings.firstPanel == eleIndex){
+		if (settings.firstPanel == eleIndex) {
 			$(this).addClass('first');
 			$(this).width(settings.widthOpen);
 		} else {
@@ -120,7 +118,7 @@ jQuery.fn.slidingDoors = function (options) {
 		fullWidth = fullWidth + $(this).outerWidth();
 	});
 
-	if(settings.fitToWidth != 0){
+	if (settings.fitToWidth != 0) {
 		fullWidth = settings.fitToWidth;
 	}
 	theContainer.width(fullWidth);
@@ -134,7 +132,7 @@ jQuery.fn.slidingDoors = function (options) {
 		}, function () {
 			if (settings.panelBlur) {
 				settings.panelBlur.call($(this));
-			}			
+			}
 		});
 	} else {
 		theDoors.click(function () {
