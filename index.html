@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sliding Doors - A Flexible Horizontal Accordian</title>
+<link href="code.css" rel="stylesheet" type="text/css">
+<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<article>
+    <h1>
+        Sliding Doors
+        <span>A Horizontal Accordian</span>
+    </h1>
+    <ul id="the_doors">
+        <li>
+            <img src="images/sliding-1.jpg" alt="Camera held outside of sun roof" />
+        </li>
+        <li>
+            <img src="images/sliding-2.jpg" alt="close up of campfire" />
+        </li>
+        <li>
+            <img src="images/sliding-3.jpg" alt="Sawtooth Mountains sunset" />
+        </li>
+        <li>
+            <img src="images/sliding-4.jpg" alt="Letter Boxes" />
+        </li>
+        <li>
+            <img src="images/sliding-5.jpg" alt="London Cathedral" />
+        </li>
+        <li>
+            <img src="images/sliding-6.jpg" alt="Backyard with laundry lines" />
+        </li>
+        <li>
+            <img src="images/sliding-7.jpg" alt="Turtle on a rock" />
+        </li>
+        <li>
+            <img src="images/sliding-8.jpg" alt="Parking lot sunset" />
+        </li>
+        <li>
+            <img src="images/sliding-9.jpg" alt="Spiral Jetty wide view" />
+        </li>
+        <li>
+            <img src="images/sliding-10.jpg" alt="Old concrete statue" />
+        </li>
+    </ul>
+    <br class="clear_both"/>
+    <h2>
+    	Introduction
+    </h2>
+    <p>
+    	I created this plugin out of necessity. Every accordian plugin I tried in the past was too pushy. It had limited customization with far too much built in CSS, themes, etc. So this is a super light weight horizontal accordian. The customization is up to you. The plugin comes with zero lines of accompanying CSS for you to deal with. If you want to make it look less plain, go for it, but far be it from me to assume you want some wieird theme.
+    </p>
+    <h2>
+    	What it does
+    </h2>
+    <p>
+    	The plugin looks for an unordered list and then creates a horizontal accordian from the list items. From there it looks for some options that determine the size and display of your accordian. 
+    </p>
+    <h2>
+    	The Code
+    </h2>
+    <p>
+    	You MUST declare the size of your accordian. There are 2 ways to do this. One is to declare the width of a closed panel, the width of and open panel and the height. The other way is to declare the width of and open panel, the width for the whole panel set and the height. Then let the plugin figure out the rest. Examples of both follow.
+    </p>
+    <h3>
+    	Plugin with width of open panel, closed panels and height declared
+    </h3>
+    <table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+<pre class="numbering">
+1
+2
+3
+4
+5
+6
+7
+</pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#panels"</em>).slidingDoors({
+        widthClosed: <strong>30</strong>,
+        widthOpen: <strong>500</strong>,
+        height: <strong>350</strong>
+    });
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    <h3>
+    	Plugin with open panel, total width and height declared
+    </h3>
+    <table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+<pre class="numbering">
+1
+2
+3
+4
+5
+6
+7
+</pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#panels"</em>).slidingDoors({
+        widthOpen: <strong>500</strong>,
+        fitToWidth: <strong>900</strong>,
+        height: <strong>350</strong>
+    });
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    <h2>
+    	Advanced Usage
+    </h2>
+    <p>
+    	The plugin provides several options that allow you to gain more control. There are also events available to you so you can pile on effects. Below is the plugin with all the non-required options. This is also the code that is running the sliding doors example at the top of the page.
+    </p>
+    <table cellspacing="0" id="code_block">
+        <tr>
+            <td valign="top" class="numbering">
+<pre class="numbering">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+31
+31
+</pre>
+            </td>
+            <td valign="top" style="padding:0 0 0 10px;">
+<pre>
+<b>$</b>(<i>document</i>).ready(<i>function</i>(){
+    <b>$</b>(<em>"#panels"</em>).slidingDoors({
+        widthOpen: <strong>750</strong>,
+        fitToWidth: <strong>960</strong>,
+        height: <strong>350</strong>,
+        firstPanel: <strong>4</strong>,
+        activationMethod: <em>'hover'</em>,
+        easingMethod: <em>'swing'</em>,
+        easingLength: <strong>600</strong>,
+        <span>panelFocus</span>: <i>function</i>() {
+            console.<i>log</i>(<em>'Focused: '</em> <b>+ $</b>(<em>' img'</em>, this).prop(<em>'alt'</em>));
+        },
+        <span>panelBlur</span>: <i>function</i>() {
+            console.<i>log</i>(<em>'Blurred: '</em> <b>+ $</b>(<em>' img'</em>, this).prop(<em>'alt'</em>));
+        },
+        <span>perIterationInactive</span>: <i>function</i>() {
+            <b>$</b>(<em>' img'</em>, this).<i>stop</i>().animate({ opacity: <strong>.5</strong>});
+        },
+        <span>perIterationActive</span>: <i>function</i>() {
+            <b>$</b>(<em>' img'</em>, this).<i>stop</i>().animate({ opacity: <strong>1</strong>});
+        },
+        <span>onLoaded</span>: <i>function</i>(<span class="object">returnObject</span>) {
+            <b>$</b>(<span class="object">returnObject</span>.doors).each(<i>function</i>(index, element){
+                <b>if</b>(<span class="object">returnObject</span>.intialSlideIndex <b>!=</b> index){
+                    <b>$</b>(<em>' img'</em>, element).css(<em>'opacity'</em>, <strong>.5</strong>);
+                }
+            });
+        }
+    });
+});
+</pre>
+            </td>
+        </tr>
+    </table>
+    
+    <h2>Default Options</h2>
+    
+    <ul id="default">
+        <li>
+            <ul>
+                <li class="round_top_left"><strong>Option Name</strong></li>
+                <li><strong>Default Value</strong></li>
+                <li><strong>Data Type</strong></li>
+                <li class="round_top_right"><strong>Possible Values/Further Explanation</strong></li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>activationMethod</li>
+                <li>'hover'</li>
+                <li>Type: String</li>
+                <li>Use either 'hover' or 'click'</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>easingLength</li>
+                <li>jQuery Default</li>
+                <li>Type: Int</li>
+                <li>Any positive integer (measured in milliseconds)</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>easingMethod</li>
+                <li>'linear'</li>
+                <li>Type: String</li>
+                <li>Any jQuery easing method</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>firstPanel</li>
+                <li>0</li>
+                <li>Type: Int</li>
+                <li>This is based on a zero index</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>height</li>
+                <li>0</li>
+                <li>Type: Int</li>
+                <li>Any positive integer</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>panelBlur<br/><br/></li>
+                <li>function() {}<br/><br/></li>
+                <li>Type: Function<br/><br/></li>
+                <li>This function works together when you are using 'hover' as the trigger method. It fires when you mouse off of a panel. This does not fire when 'click' is the activation method</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>panelFocus<br/><br/></li>
+                <li>function() {}<br/><br/></li>
+                <li>Type: Function<br/><br/></li>
+                <li>This function fires when a panel is activated either through hover or click (depending on activationMethod plugin option)</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>perIterationActive</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>This returns the active panel</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>perIterationInactive</li>
+                <li>function() {}</li>
+                <li>Type: Function</li>
+                <li>This returns the list of panels that are not open</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>onLoaded<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
+                <li>function() {}<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
+                <li>Type: Function<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
+                <li>Returns an object about the panels after the plugin has loaded. Note that some of these values may differ from declared values due to invalid data.<br/><br/>
+                    Object {<br/>
+                        &emsp; &emsp;doorsWidth<br/>
+                        &emsp; &emsp;numOfPanels<br/>
+                        &emsp; &emsp;container<br/>
+                        &emsp; &emsp;doors<br/>
+                        &emsp; &emsp;closedWidth<br/>
+                        &emsp; &emsp;intialSlideIndex<br/>
+                        &emsp; &emsp;openWidth<br/>
+                    }
+                </li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li>widthClosed</li>
+                <li>0</li>
+                <li>Type: Int</li>
+                <li>Any positive integer</li>
+            </ul>
+        </li>
+        <li>
+            <ul>
+                <li class="round_bottom_left">widthOpen</li>
+                <li>0</li>
+                <li>Type: Int</li>
+                <li class="round_bottom_right">Any positive integer</li>
+            </ul>
+        </li>
+    </ul>
+    <span class="clear_both"></span>
+</article>
+<script type="text/javascript" src="js/jq.1.8.js"></script>
+<script type="text/javascript" src="js/sliding.doors.1.0.js"></script>
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	
+	$('#the_doors').slidingDoors({
+		widthOpen: 750,
+		fitToWidth: 960,
+		height: 350,
+		firstPanel: 4,
+		activationMethod: 'hover',
+		easingMethod: 'swing',
+		easingLength: 600,
+		panelFocus: function () { 
+			console.log('Focused: ' + $(' img', this).prop('alt')); 
+		},
+		panelBlur: function () { 
+			console.log('Blurred: ' + $(' img', this).prop('alt')); 
+		},
+		perIterationInactive: function () {
+			$(' img', this).stop().animate({ opacity: .5});
+		},
+		perIterationActive: function () {
+			$(' img', this).stop().animate({ opacity: 1});
+		},
+		onLoaded: function (returnObject) { 
+			$(returnObject.doors).each(function(index, element){
+				if(returnObject.intialSlideIndex != index){
+					$(' img', element).css('opacity', .5);
+				}
+			});		
+		}
+	});	
+	
+});
+-->
+</script>
+</body>
+</html>
