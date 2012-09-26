@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -66,9 +66,9 @@
     <h3>
     	Plugin with width of open panel, closed panels and height declared
     </h3>
-    <table cellspacing="0" id="code_block">
+    <table class="code_block">
         <tr>
-            <td valign="top" class="numbering">
+            <td class="numbering">
 <pre class="numbering">
 1
 2
@@ -79,7 +79,7 @@
 7
 </pre>
             </td>
-            <td valign="top" style="padding:0 0 0 10px;">
+            <td>
 <pre>
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
     <b>$</b>(<em>"#panels"</em>).slidingDoors({
@@ -95,9 +95,9 @@
     <h3>
     	Plugin with open panel, total width and height declared
     </h3>
-    <table cellspacing="0" id="code_block">
+    <table class="code_block">
         <tr>
-            <td valign="top" class="numbering">
+            <td class="numbering">
 <pre class="numbering">
 1
 2
@@ -108,7 +108,7 @@
 7
 </pre>
             </td>
-            <td valign="top" style="padding:0 0 0 10px;">
+            <td>
 <pre>
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
     <b>$</b>(<em>"#panels"</em>).slidingDoors({
@@ -127,9 +127,9 @@
     <p>
     	The plugin provides several options that allow you to gain more control. There are also events available to you so you can pile on effects. Below is the plugin with all the non-required options. This is also the code that is running the sliding doors example at the top of the page.
     </p>
-    <table cellspacing="0" id="code_block">
+    <table class="code_block">
         <tr>
-            <td valign="top" class="numbering">
+            <td class="numbering">
 <pre class="numbering">
 1
 2
@@ -163,7 +163,7 @@
 31
 </pre>
             </td>
-            <td valign="top" style="padding:0 0 0 10px;">
+            <td>
 <pre>
 <b>$</b>(<i>document</i>).ready(<i>function</i>(){
     <b>$</b>(<em>"#panels"</em>).slidingDoors({
@@ -224,7 +224,7 @@
                 <li>easingLength</li>
                 <li>jQuery Default</li>
                 <li>Type: Int</li>
-                <li>Any positive integer (measured in milliseconds)</li>
+                <li>Any unsigned integer (measured in milliseconds)</li>
             </ul>
         </li>
         <li>
@@ -248,7 +248,7 @@
                 <li>height</li>
                 <li>0</li>
                 <li>Type: Int</li>
-                <li>Any positive integer</li>
+                <li>Any unsigned integer</li>
             </ul>
         </li>
         <li>
@@ -285,10 +285,10 @@
         </li>
         <li>
             <ul>
-                <li>onLoaded<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
-                <li>function() {}<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
-                <li>Type: Function<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></li>
-                <li>Returns an object about the panels after the plugin has loaded. Note that some of these values may differ from declared values due to invalid data.<br/><br/>
+                <li style="height:250px;">onLoaded</li>
+                <li style="height:250px;">function() {}</li>
+                <li style="height:250px;">Type: Function</li>
+                <li style="height:250px;">Returns an array of objects about the panels after the plugin has loaded. Note that some of these values may differ from declared values due to invalid data.<br/><br/>
                     Object {<br/>
                         &emsp; &emsp;doorsWidth<br/>
                         &emsp; &emsp;numOfPanels<br/>
@@ -297,7 +297,8 @@
                         &emsp; &emsp;closedWidth<br/>
                         &emsp; &emsp;intialSlideIndex<br/>
                         &emsp; &emsp;openWidth<br/>
-                    }
+                    }<br/><br/>                
+                    <strong>WARNING:</strong> If you have multiple unordered lists with the same plugin instantiation, the objects returned can cause unexpected behavior. It is recommended to use multiple plugin instantiations if you encounter problems.
                 </li>
             </ul>
         </li>
@@ -306,7 +307,7 @@
                 <li>widthClosed</li>
                 <li>0</li>
                 <li>Type: Int</li>
-                <li>Any positive integer</li>
+                <li>Any unsigned integer</li>
             </ul>
         </li>
         <li>
@@ -314,7 +315,7 @@
                 <li class="round_bottom_left">widthOpen</li>
                 <li>0</li>
                 <li>Type: Int</li>
-                <li class="round_bottom_right">Any positive integer</li>
+                <li class="round_bottom_right">Any unsigned integer</li>
             </ul>
         </li>
     </ul>
@@ -347,14 +348,19 @@ $(document).ready(function(){
 			$(' img', this).stop().animate({ opacity: 1});
 		},
 		onLoaded: function (returnObject) { 
-			$(returnObject.doors).each(function(index, element){
-				if(returnObject.intialSlideIndex != index){
-					$(' img', element).css('opacity', .5);
+			var i = 0;
+			$(returnObject[i].doors).each(function(index, element)
+			{
+				if(returnObject[i].intialSlideIndex != index)
+				{
+					if($(' img', element).length > 0)
+					{
+						$(' img', element).css('opacity', .5);
+					}
 				}
-			});		
+			});	
 		}
-	});	
-	
+	});
 });
 -->
 </script>

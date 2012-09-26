@@ -31,8 +31,8 @@ pre .object{
 pre .comment{
 	color:#999992;
 }
-#code_block{
-	width:500px;
+.code_block{
+	width:700px;
 	border:0;
 	padding:0;
 	border:0;
@@ -42,7 +42,7 @@ pre .comment{
 	border-radius: 8px;
 }
 td{
-	padding:0;
+	padding:0 0 0 10px;
 	margin:0;
 	border:0;
 	
@@ -51,7 +51,7 @@ td.numbering{
 	 background: #cccccc;
 	 padding:0 12px 0 4px;
 	 width:10px;
-	
+	 vertical-align:top;
 }
 .intro_page td.numbering{
 	border-radius: 7px 0 0 7px;
