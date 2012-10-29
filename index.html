@@ -174,19 +174,19 @@
         activationMethod: <em>'hover'</em>,
         easingMethod: <em>'swing'</em>,
         easingLength: <strong>600</strong>,
-        <span>panelFocus</span>: <i>function</i>() {
+        panelFocus: <i>function</i>() {
             console.<i>log</i>(<em>'Focused: '</em> <b>+ $</b>(<em>' img'</em>, this).prop(<em>'alt'</em>));
         },
-        <span>panelBlur</span>: <i>function</i>() {
+        panelBlur: <i>function</i>() {
             console.<i>log</i>(<em>'Blurred: '</em> <b>+ $</b>(<em>' img'</em>, this).prop(<em>'alt'</em>));
         },
-        <span>perIterationInactive</span>: <i>function</i>() {
+        perIterationInactive: <i>function</i>() {
             <b>$</b>(<em>' img'</em>, this).<i>stop</i>().animate({ opacity: <strong>.5</strong>});
         },
-        <span>perIterationActive</span>: <i>function</i>() {
+        perIterationActive: <i>function</i>() {
             <b>$</b>(<em>' img'</em>, this).<i>stop</i>().animate({ opacity: <strong>1</strong>});
         },
-        <span>onLoaded</span>: <i>function</i>(<span class="object">returnObject</span>) {
+        onLoaded: <i>function</i>(<span class="object">returnObject</span>) {
             <b>$</b>(<span class="object">returnObject</span>.doors).each(<i>function</i>(index, element){
                 <b>if</b>(<span class="object">returnObject</span>.intialSlideIndex <b>!=</b> index){
                     <b>$</b>(<em>' img'</em>, element).css(<em>'opacity'</em>, <strong>.5</strong>);
